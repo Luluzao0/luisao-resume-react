@@ -14,7 +14,7 @@ import heroImage from '../images/luisao-dev.png';
 import porfolioImage1 from '../images/portfolio/porfolioImage1.png';
 import porfolioImage2 from '../images/portfolio/porfolioImage2.png';
 import profilepic from '../images/minhafoto.jpg';
-import testimonialImage from '../images/luisao-dev.png';
+import testimonialImage from '../images/testimonial.webp';
 
 import {
   About,

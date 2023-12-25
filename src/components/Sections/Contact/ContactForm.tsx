@@ -1,5 +1,5 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
 import emailjs from 'emailjs-com';
+import React, {ChangeEvent, FormEvent, useState} from 'react';
 
 interface FormData {
   name: string;
@@ -7,7 +7,7 @@ interface FormData {
   message: string;
 }
 
-const ContactForm = () => {
+const ContactForm = React.memo(() => {
   // State to hold form data
   const [data, setData] = useState<FormData>({
     name: '',
@@ -20,8 +20,8 @@ const ContactForm = () => {
 
   // Handle form field changes
   const onChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
-    setData((prevData) => ({ ...prevData, [name]: value }));
+    const {name, value} = event.target;
+    setData((prevData) => ({...prevData, [name]: value}));
   };
 
   // Handle form submission
@@ -32,7 +32,7 @@ const ContactForm = () => {
       emailjs.send('service_964ukp7', 'template_no03tx8', data as unknown as Record<string, unknown>, 'b4Z4AJlhtJ57rwcYq')
         .then(() => {
           console.log('Email sent successfully');
-          setData({ name: '', email: '', message: '' }); // Reset form
+          setData({name: '', email: '', message: ''}); // Reset form
           setSuccessMessage('Email enviado com sucesso!'); // Set success message
         }, (error) => {
           console.error('Error sending email:', error);
@@ -46,7 +46,7 @@ const ContactForm = () => {
     <form className="grid min-h-[320px] grid-cols-1 gap-y-4" onSubmit={handleSendMessage}>
       {/* Input fields */}
       <input className="bg-neutral-700 border-0 focus:ring-1 focus:ring-orange-600 rounded-md text-neutral-200 text-sm" name="name" onChange={onChange} placeholder="Name" required type="text" />
-      <input className="bg-neutral-700 border-0 focus:ring-1 focus:ring-orange-600 rounded-md text-neutral-200 text-sm" autoComplete="email" name="email" onChange={onChange} placeholder="Email" required type="email" />
+      <input autoComplete="email" className="bg-neutral-700 border-0 focus:ring-1 focus:ring-orange-600 rounded-md text-neutral-200 text-sm" name="email" onChange={onChange} placeholder="Email" required type="email" />
       <textarea className="bg-neutral-700 border-0 focus:ring-1 focus:ring-orange-600 rounded-md text-neutral-200 text-sm" maxLength={250} name="message" onChange={onChange} placeholder="Message" required rows={6} />
 
       {/* Submit button */}
@@ -58,6 +58,6 @@ const ContactForm = () => {
       {successMessage && <p>{successMessage}</p>}
     </form>
   );
-};
+});
 
 export default ContactForm;
