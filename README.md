@@ -1,2 +1,2 @@
 # my personal web page
-<p>.</p>
+<p>. .</p>
