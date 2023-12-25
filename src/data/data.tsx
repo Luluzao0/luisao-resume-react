@@ -93,16 +93,14 @@ export const heroData: Hero = {
 export const aboutData: About = {
   profileImageSrc: profilepic,
   description: `Welcome to my corner of the web! With a robust 5-year professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
-
-
-  `,
+`,
   aboutItems: [
-    {label: 'Location', text: 'São Luís, MA', Icon: MapIcon},
-    {label: 'Age', text: '20', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Brazilian', Icon: FlagIcon},
-    {label: 'Interests', text: 'Tech, Physics, Math', Icon: SparklesIcon},
-    {label: 'Study', text: 'State University of Maranhão', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'LAPS', Icon: BuildingOffice2Icon},
+    { label: 'Location', text: 'São Luís, MA', Icon: MapIcon },
+    { label: 'Age', text: '20', Icon: CalendarIcon },
+    { label: 'Nationality', text: 'Brazilian', Icon: FlagIcon },
+    { label: 'Interests', text: 'Tech, Physics, Math', Icon: SparklesIcon },
+    { label: 'Study', text: 'State University of Maranhão', Icon: AcademicCapIcon },
+    { label: 'Employment', text: 'LAPS', Icon: BuildingOffice2Icon },
   ],
 };
 
