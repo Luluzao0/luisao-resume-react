@@ -3,8 +3,10 @@ version = 2
 [[services]]
   name = "web"
   image = "luluzao/dockersiteluisao:latest"
+  root = "src"
 
-  [services.env]
-    key = "NODE_ENV"
-    value = "production"
-  # ... outras configurações ...
+  [services.build]
+    command = "npm install && npm run build"
+
+  [services.start]
+    command = "npm start"
