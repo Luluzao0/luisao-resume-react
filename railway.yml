@@ -1,0 +1,5 @@
+scripts:
+  - name: Build
+    command: yarn install && yarn build
+  - name: Start
+    command: yarn start
