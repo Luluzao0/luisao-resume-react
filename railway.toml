@@ -1,0 +1,10 @@
+version = 2
+
+[[services]]
+  name = "web"
+  image = "luluzao/dockersiteluisao:latest"
+
+  [services.env]
+    key = "NODE_ENV"
+    value = "production"
+  # ... outras configurações ...
