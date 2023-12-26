@@ -10,8 +10,11 @@ COPY . .
 # Instale as dependências do seu projeto
 RUN yarn install
 
-# Construa o aplicativo (ignorando temporariamente os erros de linting)
-RUN yarn compile && yarn next build --no-lint
+# Construa o aplicativo
+RUN yarn build
+
+# Exponha a porta em que o aplicativo será executado
+EXPOSE 3000
 
 # Inicie o aplicativo
 CMD ["yarn", "start"]
