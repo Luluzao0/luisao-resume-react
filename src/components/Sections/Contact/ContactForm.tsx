@@ -1,3 +1,9 @@
+{/*
+
+
+
+*/}
+
 import emailjs from 'emailjs-com';
 import React, {ChangeEvent, FormEvent, useState} from 'react';
 
@@ -48,12 +54,10 @@ const ContactForm = React.memo(() => {
       <input className="bg-neutral-700 border-0 focus:ring-1 focus:ring-orange-600 rounded-md text-neutral-200 text-sm" name="name" onChange={onChange} placeholder="Name" required type="text" />
       <input autoComplete="email" className="bg-neutral-700 border-0 focus:ring-1 focus:ring-orange-600 rounded-md text-neutral-200 text-sm" name="email" onChange={onChange} placeholder="Email" required type="email" />
       <textarea className="bg-neutral-700 border-0 focus:ring-1 focus:ring-orange-600 rounded-md text-neutral-200 text-sm" maxLength={250} name="message" onChange={onChange} placeholder="Message" required rows={6} />
-
       {/* Submit button */}
       <button className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md hover:bg-stone-800" type="submit">
         Send Message
       </button>
-
       {/* Success message */}
       {successMessage && <p>{successMessage}</p>}
     </form>

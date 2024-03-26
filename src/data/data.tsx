@@ -13,6 +13,10 @@ import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import heroImage from '../images/luisao-dev.png';
 import porfolioImage1 from '../images/portfolio/porfolioImage1.png';
 import porfolioImage2 from '../images/portfolio/porfolioImage2.png';
+import artigoiniciante from '../images/portfolio/artigoiniciante.png';
+import login1 from '../images/portfolio/login1.png'
+import emc from '../images/portfolio/emc.png';
+import sistemavenda from '../images/portfolio/sistemavenda.png'
 import profilepic from '../images/minhafoto.jpg';
 import testimonialImage from '../images/luisao-dev.png';
 
@@ -63,10 +67,10 @@ export const heroData: Hero = {
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
         I'm a São Luís based <strong className="text-stone-100">Computer Engineer</strong>, currently working
-        at <strong className="text-stone-100">Signal Processing Laboratory (LAPS)</strong> helping build a modern, mobile-first, Web | Machine Learning | IA project in UEMA.
+        at <strong className="text-stone-100">Signal Processing Laboratory (LAPS) & IMESC</strong> helping build a modern, mobile-first, Web | Machine Learning | IA project in UEMA.
       </p>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        In my free time time, you can catch me studying in <strong className="text-stone-100">dio.me</strong>,
+        In my free time time, you can catch me <strong className="text-stone-100">studying</strong>,
         reading <strong className="text-stone-100">books</strong>, or exploring beautiful{' '}
         <strong className="text-stone-100">São Luís Island</strong>.
       </p>
@@ -74,7 +78,7 @@ export const heroData: Hero = {
   ),
   actions: [
     {
-      href: 'https://drive.google.com/file/d/15yDpAIwycrXCuKfVmUlLFVQAQAOpnvCd/view?usp=sharing',
+      href: 'https://drive.google.com/file/d/13Hv4vyBdHTtM7SuLVtjwJ9wQEmjLXUP2/view?usp=sharing',
       text: 'Resume',
       primary: true,
       Icon: ArrowDownTrayIcon,
@@ -92,7 +96,7 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `Welcome to my corner of the web! With a robust 5-year professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
+  description: `Welcome to my corner of the web! With a robust 8-year professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at Technos Engenharia  , São Luís / TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
 `,
   aboutItems: [
     { label: 'Location', text: 'São Luís, MA', Icon: MapIcon },
@@ -127,6 +131,10 @@ export const skills: SkillGroup[] = [
         name: 'Français',
         level: 2, 
       },
+      {
+        name: 'Deustch',
+        level: 1,
+      },
     ],
   },
   {
@@ -158,9 +166,14 @@ export const skills: SkillGroup[] = [
         level: 10,
       },
       {
-        name: 'Java',
+        name: 'Java(JSE, JEE, MVC, Data, JPA, Spring)',
         level: 6,
       },
+      {
+        name: 'PHP(Laravel, Blade Template, Composer)',
+        level: 10,
+      },
+
     ],
   },
   {
@@ -180,6 +193,92 @@ export const skills: SkillGroup[] = [
       },
     ],
   },
+  {
+    name: 'DevOps',
+    skills: [
+      {
+        name: 'Docker',
+        level: 10,
+      },
+      {
+        name: 'Kubernetes',
+        level: 3,
+      },
+      {
+        name: 'Gradle',
+        level: 6,
+      },
+      {
+        name: 'Jira',
+        level: 2,
+      },
+    ],
+  },
+  {
+    name: 'Database',
+    skills: [
+      {
+        name: 'MySQL',
+        level: 10,
+      },
+      {
+        name: 'MongoDB',
+        level: 7,
+      },
+      {
+        name: 'Redis',
+        level: 4,
+      },
+    ],
+  },
+  {
+    name: 'Clouding',
+    skills: [
+      {
+        name: 'AWS',
+        level: 10,
+      },
+      {
+        name: 'Google Clouding System ',
+        level: 8,
+      },
+      {
+        name: 'Azure',
+        level: 3,
+      },
+    ],
+  },
+  {
+    name: 'APIs',
+    skills: [
+      {
+        name: 'REST APIs',
+        level: 10,
+      },
+      {
+        name: 'GraphQL',
+        level: 7,
+      },
+    ],
+  },
+  {
+    name: 'IA & ML',
+    skills: [
+      {
+        name: 'TensorFlow',
+        level: 9,
+      },
+      {
+        name: 'PyTorch ',
+        level: 5,
+      },
+      {
+        name: 'OpenCV',
+        level: 3,
+      },
+    ],
+  },
+
 ];
 
 /**
@@ -198,6 +297,30 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://technos-clientes-cadastro.streamlit.app/',
     image: porfolioImage2,
   },
+  {
+    title: 'Article',
+    description: 'Teaching how starts in programming',
+    url: 'https://medium.com/@1LgL/iniciante-na-programa%C3%A7%C3%A3o-siga-essas-dicas-31df215dffa6',
+    image: artigoiniciante,
+  },
+  {
+    title: 'Teaching Language C',
+    description: 'All about C',
+    url: 'https://www.notion.so/luisaodev/Estudos-em-C-dc4be0bd099e4f6bb31d25955353cca6?pvs=4',
+    image: emc,
+  },
+  {
+    title: 'Login Page 3D animation',
+    description: 'project',
+    url: 'https://github.com/Luluzao0/TestingFlask-Site-Python',
+    image: login1,
+  },
+  {
+    title: 'sales management system',
+    description: 'project',
+    url: 'https://github.com/Luluzao0/cellphone-sales-management-system',
+    image: sistemavenda,
+  },
 ];
 
 /**
@@ -205,7 +328,7 @@ export const portfolioItems: PortfolioItem[] = [
  */
 export const education: TimelineItem[] = [
   {
-    date: 'August 26',
+    date: 'August 2022 - Present',
     location: 'UEMA',
     title: 'Computer Engenieering',
     content: <p>I am a passionate and dedicated researcher at the Signal Processing Laboratory (LAPS) with a strong focus on
@@ -228,12 +351,40 @@ export const experience: TimelineItem[] = [
     ),
   },
   {
+    date: 'January 2021 - November 2023',
+    location: 'TECHNOS ENGENHARIA',
+    title: 'Financial Developer',
+    content: (
+      <p>
+        Financial developer of payment systems using algorithms to collect and use data for applications on stock <br></br>
+        <strong>Skills: Researcher · Stock Market  · Back-end development · AI · Machine Learning · Economics </strong>
+      </p>
+    ),
+  },
+  {
     date: 'January 2023 - September 2023',
     location: 'TELUS International, Vancouver',
     title: 'Software Developer',
     content: (
       <p>
-        I would highlight my work on a web development project for an e-commerce client. In this project, I was tasked with creating a new user interface for the existing website, with an emphasis on optimizing performance and making it fully responsive.
+        I would highlight my work on a web development project for an e-commerce client. In this project, I was tasked with creating a new user interface for the existing website, with an emphasis on optimizing performance and making it fully responsive. <br></br>
+        <strong>Skills: Back-end development · Front-end development · Web development </strong> 
+
+      </p>
+    ),
+  },
+  {
+    date: 'January 2024 - Present',
+    location: 'IMESC',
+    title: 'Software Developer',
+    content: (
+      <p>a dedicated professional who works at IMESC, the Maranhão Institute of Socio-Economic and Cartographic
+Socioeconomic and Cartographic Studies. My mission is to promote the socio-economic
+development of Maranhão through research, studies and analysis. To this end, we are
+modernizing our digital products, such as the IMESC app, the IMESC Amplo platform,
+the GeoportalSEI ZEE-Ma and the DATA-IMESC platform. <br></br>
+      <strong>Skills: Clouding · Web development </strong>
+
       </p>
     ),
   },
