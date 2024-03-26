@@ -14,7 +14,7 @@ import heroImage from '../images/luisao-dev.png';
 import porfolioImage1 from '../images/portfolio/porfolioImage1.png';
 import porfolioImage2 from '../images/portfolio/porfolioImage2.png';
 import artigoiniciante from '../images/portfolio/artigoiniciante.png';
-import login1 from '../images/portfolio/login1.png'
+import login from '../images/portfolio/login.png'
 import emc from '../images/portfolio/emc.png';
 import sistemavenda from '../images/portfolio/sistemavenda.png'
 import profilepic from '../images/minhafoto.jpg';
@@ -313,7 +313,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Login Page 3D animation',
     description: 'project',
     url: 'https://github.com/Luluzao0/TestingFlask-Site-Python',
-    image: login1,
+    image: login,
   },
   {
     title: 'sales management system',
