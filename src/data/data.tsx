@@ -16,6 +16,7 @@ import porfolioImage2 from '../images/portfolio/porfolioImage2.png';
 import artigoiniciante from '../images/portfolio/artigoiniciante.png';
 import login from '../images/portfolio/login.png'
 import emc from '../images/portfolio/emc.png';
+import postgresql from '../images/portfolio/postgresql.png'
 import sistemavenda from '../images/portfolio/sistemavenda.png'
 import profilepic from '../images/minhafoto.jpg';
 import testimonialImage from '../images/luisao-dev.png';
@@ -321,6 +322,12 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://github.com/Luluzao0/cellphone-sales-management-system',
     image: sistemavenda,
   },
+  {
+    title: 'Aula PostgreSQL',
+    description:'breve estudo sobre um dos SGDB mais famosos do mundo',
+    url:'https://youtu.be/q_q6Jn5XDaQ?si=EIAFbU98wndKpMAN',
+    image: postgresql,
+  }
 ];
 
 /**
