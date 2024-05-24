@@ -18,6 +18,9 @@ import login from '../images/portfolio/login.png'
 import emc from '../images/portfolio/emc.png';
 import postgresql from '../images/portfolio/postgresql.png'
 import sistemavenda from '../images/portfolio/sistemavenda.png'
+import botvotacao from '../images/portfolio/botvotacao.png';
+import appjogoceuma from '../images/portfolio/appjogoceuma.png'
+
 import profilepic from '../images/minhafoto.jpg';
 import testimonialImage from '../images/luisao-dev.png';
 
@@ -327,6 +330,18 @@ export const portfolioItems: PortfolioItem[] = [
     description:'breve estudo sobre um dos SGDB mais famosos do mundo',
     url:'https://youtu.be/q_q6Jn5XDaQ?si=EIAFbU98wndKpMAN',
     image: postgresql,
+  },
+  {
+    title: 'Bot ',
+    description: 'Bot para votações',
+    url: 'https://github.com/Luluzao0/bot_vota--o',
+    image: botvotacao,
+  },
+  {
+    title: 'App para Saúde',
+    description: 'App para jogo envolvendo a area da saúde(em dev)',
+    url: 'https://github.com/Luluzao0/App-project-ceuma',
+    image: appjogoceuma,
   }
 ];
 
@@ -404,12 +419,12 @@ export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
-      name: 'Suami Santos',
+      name: 'Suami Gomes Santos',
       text: 'Use this opportunity to witness the seamless efficiency of our Customer Registration System, a key component of Technos commitment to excellence. Our CRUD system for client management sets the gold standard, revolutionizing how businesses engage with their customer data',
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
     },
     {
-      name: 'Matheus Santos',
+      name: 'Matheus Machado Santos',
       text: 'If you are looking to dive into the world of intelligent systems, trust me, Luisao Dev, Python is your guide to learn. Its got the libraries, the community, and the magic touch to make your projects soar! 🚀',
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
     },
