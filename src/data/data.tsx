@@ -8,8 +8,11 @@ import {
   SparklesIcon,
 } from '@heroicons/react/24/outline';
 
+//Icons
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
+
+//images
 import heroImage from '../images/luisao-dev.png';
 import porfolioImage1 from '../images/portfolio/porfolioImage1.png';
 import porfolioImage2 from '../images/portfolio/porfolioImage2.png';
@@ -20,9 +23,9 @@ import postgresql from '../images/portfolio/postgresql.png'
 import sistemavenda from '../images/portfolio/sistemavenda.png'
 import botvotacao from '../images/portfolio/botvotacao.png';
 import appjogoceuma from '../images/portfolio/appjogoceuma.png'
-
 import profilepic from '../images/minhafoto.jpg';
 import testimonialImage from '../images/luisao-dev.png';
+
 
 import {
   About,
@@ -41,7 +44,7 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'Luisao Dev ',
+  title: 'LuisaoDev ',
   description: "this is a portfolio website",
 };
 
@@ -100,7 +103,7 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `Welcome to my corner of the web! With a robust 8-year professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at Technos Engenharia  , São Luís / TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
+  description: `LuisaoDev. Welcome to my corner of the web! With a robust 8-year professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at Technos Engenharia  , São Luís / TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
 `,
   aboutItems: [
     { label: 'Location', text: 'São Luís, MA', Icon: MapIcon },
