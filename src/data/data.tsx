@@ -428,12 +428,12 @@ export const testimonial: TestimonialSection = {
     },
     {
       name: 'Matheus Machado Santos',
-      text: 'If you are looking to dive into the world of intelligent systems, trust me, Luisao Dev, Python is your guide to learn. Its got the libraries, the community, and the magic touch to make your projects soar! 🚀',
+      text: 'If you are looking to dive into the world of intelligent systems, trust me, LuisaoDev, Python is your guide to learn. Its got the libraries, the community, and the magic touch to make your projects soar! 🚀',
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
     },
     {
       name: 'Patrick Melo',
-      text: 'Luisao Dev is a multifaceted and dynamic professional who operates at the intersection of web development, machine learning, and artificial intelligence. With a passion for leveraging cutting-edge technologies to create innovative solutions, Luisao Dev has established a reputation for delivering high-quality projects that seamlessly integrate these diverse fields.',
+      text: 'LuisaoDev is a multifaceted and dynamic professional who operates at the intersection of web development, machine learning, and artificial intelligence. With a passion for leveraging cutting-edge technologies to create innovative solutions, LuisaoDev has established a reputation for delivering high-quality projects that seamlessly integrate these diverse fields.',
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
     },
   ],
