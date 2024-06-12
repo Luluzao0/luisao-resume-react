@@ -13,18 +13,18 @@ import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 
 //images
-import heroImage from '../images/luisao-dev.png';
-import porfolioImage1 from '../images/portfolio/porfolioImage1.png';
-import porfolioImage2 from '../images/portfolio/porfolioImage2.png';
-import artigoiniciante from '../images/portfolio/artigoiniciante.png';
-import login from '../images/portfolio/login.png'
-import emc from '../images/portfolio/emc.png';
-import postgresql from '../images/portfolio/postgresql.png'
-import sistemavenda from '../images/portfolio/sistemavenda.png'
-import botvotacao from '../images/portfolio/botvotacao.png';
-import appjogoceuma from '../images/portfolio/appjogoceuma.png'
-import profilepic from '../images/minhafoto.jpg';
-import testimonialImage from '../images/luisao-dev.png';
+import heroImage from '../images/luisao-dev.webp';
+import porfolioImage1 from '../images/portfolio/porfolioImage1.webp';
+import porfolioImage2 from '../images/portfolio/porfolioImage2.webp';
+import artigoiniciante from '../images/portfolio/artigoiniciante.webp';
+import login from '../images/portfolio/login.webp'
+import emc from '../images/portfolio/emc.webp';
+import postgresql from '../images/portfolio/postgresql.webp'
+import sistemavenda from '../images/portfolio/sistemavenda.webp'
+import botvotacao from '../images/portfolio/botvotacao.webp';
+import appjogoceuma from '../images/portfolio/appjogoceuma.webp'
+import profilepic from '../images/minhafoto.webp';
+import testimonialImage from '../images/luisao-dev.webp';
 
 
 import {
