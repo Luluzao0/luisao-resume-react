@@ -85,7 +85,7 @@ export const heroData: Hero = {
   ),
   actions: [
     {
-      href: 'https://drive.google.com/file/d/13Hv4vyBdHTtM7SuLVtjwJ9wQEmjLXUP2/view?usp=sharing',
+      href: 'https://drive.google.com/file/d/1tIHCLrVj1BSwhIQ19VzCRCMJnKa8qmLc/view?usp=sharing',
       text: 'Resume',
       primary: true,
       Icon: ArrowDownTrayIcon,
@@ -103,7 +103,7 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `LuisaoDev. Welcome to my corner of the web! With a robust 8-year professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at Technos Engenharia  , São Luís / TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
+  description: `LuisaoDev. Welcome to my corner of the web! With years in professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at Technos Engenharia  , São Luís / TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
 `,
   aboutItems: [
     { label: 'Location', text: 'São Luís, MA', Icon: MapIcon },
@@ -295,13 +295,13 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Site Devlopment for Lab',
     description: 'site of laps',
-    url: 'https://laps.up.railway.app/',
+    url: 'https://lablaps.vercel.app/',
     image: porfolioImage1,
   },
   {
     title: 'Simple CRUD for client register',
     description: 'Technos Company',
-    url: 'https://technos-clientes-cadastro.streamlit.app/',
+    url: 'https://techdata.streamlit.app/',
     image: porfolioImage2,
   },
   {
@@ -376,7 +376,7 @@ export const experience: TimelineItem[] = [
     ),
   },
   {
-    date: 'January 2021 - November 2023',
+    date: 'January 2022 - August 2024',
     location: 'TECHNOS ENGENHARIA',
     title: 'Financial Developer',
     content: (
@@ -450,7 +450,7 @@ export const contact: ContactSection = {
     {
       type: ContactType.Email,
       text: 'Email',
-      href: 'mailto:luis.20220086977@aluno.uema.br',
+      href: 'mailto:Luisaodev@protonmail.com',
     },
     {
       type: ContactType.Location,
