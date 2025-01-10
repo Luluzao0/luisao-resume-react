@@ -450,7 +450,7 @@ export const contact: ContactSection = {
     {
       type: ContactType.Email,
       text: 'Email',
-      href: 'mailto:Luisaodev@protonmail.com',
+      href: 'mailto:devluisao@gmail.com',
     },
     {
       type: ContactType.Location,
