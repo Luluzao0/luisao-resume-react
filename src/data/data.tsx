@@ -378,7 +378,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'StockTrack',
     description: 'StokTrack é um site para controle de estoque de produtos, com funcionalidades de CRUD e autenticação de usuários, tudo em nuvem.', 
     url: 'https://github.com/Luluzao0/',
-    image: cardiotrack,
+    image: strocktrack,
   },
 ];
 
