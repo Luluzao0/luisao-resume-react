@@ -22,10 +22,14 @@ import emc from '../images/portfolio/emc.webp';
 import postgresql from '../images/portfolio/postgresql.webp'
 import sistemavenda from '../images/portfolio/sistemavenda.webp'
 import botvotacao from '../images/portfolio/botvotacao.webp';
-import appjogoceuma from '../images/portfolio/appjogoceuma.webp'
+import appceuma from '../images/portfolio/appceuma.webp'
 import profilepic from '../images/minhafoto.webp';
 import testimonialImage from '../images/luisao-dev.webp';
-
+import pycalculus from '../images/portfolio/pycalculus.webp';
+import fipy from '../images/portfolio/fipy.webp';
+import currency from '../images/portfolio/currency.webp';
+import cardiotrack from '../images/portfolio/cardiotrack.webp';
+import strocktrack from '../images/portfolio/strocktrack.webp';
 
 import {
   About,
@@ -149,11 +153,11 @@ export const skills: SkillGroup[] = [
     skills: [
       {
         name: 'React',
-        level: 9,
+        level: 10,
       },
       {
         name: 'Typescript',
-        level: 7,
+        level: 9,
       },
       {
         name: 'SCSS',
@@ -166,7 +170,7 @@ export const skills: SkillGroup[] = [
     skills: [
       {
         name: 'Node.js',
-        level: 8,
+        level: 10,
       },
       {
         name: 'Python',
@@ -188,7 +192,7 @@ export const skills: SkillGroup[] = [
     skills: [
       {
         name: 'React Native',
-        level: 9,
+        level: 10,
       },
       {
         name: 'Flutter',
@@ -209,7 +213,7 @@ export const skills: SkillGroup[] = [
       },
       {
         name: 'Kubernetes',
-        level: 3,
+        level: 6,
       },
       {
         name: 'Gradle',
@@ -230,7 +234,7 @@ export const skills: SkillGroup[] = [
       },
       {
         name: 'MongoDB',
-        level: 7,
+        level: 8,
       },
       {
         name: 'Redis',
@@ -264,7 +268,7 @@ export const skills: SkillGroup[] = [
       },
       {
         name: 'GraphQL',
-        level: 7,
+        level: 10,
       },
     ],
   },
@@ -273,7 +277,7 @@ export const skills: SkillGroup[] = [
     skills: [
       {
         name: 'TensorFlow',
-        level: 9,
+        level: 10,
       },
       {
         name: 'PyTorch ',
@@ -281,7 +285,7 @@ export const skills: SkillGroup[] = [
       },
       {
         name: 'OpenCV',
-        level: 3,
+        level: 5,
       },
     ],
   },
@@ -295,7 +299,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Site Devlopment for Lab',
     description: 'site of laps',
-    url: 'https://lablaps.vercel.app/',
+    url: 'https://lablaps.vercel.app/news',
     image: porfolioImage1,
   },
   {
@@ -341,11 +345,41 @@ export const portfolioItems: PortfolioItem[] = [
     image: botvotacao,
   },
   {
-    title: 'App para Saúde',
-    description: 'App para jogo envolvendo a area da saúde(em dev)',
+    title: 'MedQuiz',
+    description: 'O Quiz de Medicina que vai te ajudar a estudar de forma divertida!', 
     url: 'https://github.com/Luluzao0/App-project-ceuma',
-    image: appjogoceuma,
-  }
+    image: appceuma,
+  },
+  {
+    title: 'PyCalculus',
+    description: 'Os cálculos mais complexos de forma simples',
+    url: 'https://github.com/Luluzao0/PyCalculus',
+    image: pycalculus,
+  },
+  {
+    title: 'Fipy',
+    description: 'Previsão de ações usando modelos(ADAM) de redes neurais e deep learning para prever o preço de ações com base em dados históricos.', 
+    url: 'https://github.com/Luluzao0/fipy',
+    image: fipy,
+  },
+  {
+    title: 'Currency Rate App',
+    description: 'Aplicativo para coverter moedas em tempo real, utilizando a API da ExchangeRateAPI', 
+    url: 'https://github.com/Luluzao0/Currency-rate-app',
+    image: currency,
+  },
+  {
+    title: 'CardioTrack',
+    description: 'CardioTrack é um aplicativo de monitoramento de saúde que permite aos usuários acompanhar sua pressão arterial em tempo real.', 
+    url: 'https://github.com/Luluzao0/PressureApp',
+    image: cardiotrack,
+  },
+  {
+    title: 'StockTrack',
+    description: 'StokTrack é um site para controle de estoque de produtos, com funcionalidades de CRUD e autenticação de usuários, tudo em nuvem.', 
+    url: 'https://github.com/Luluzao0/',
+    image: cardiotrack,
+  },
 ];
 
 /**
