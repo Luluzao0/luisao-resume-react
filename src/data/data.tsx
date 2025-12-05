@@ -111,7 +111,7 @@ export const aboutData: About = {
 `,
   aboutItems: [
     { label: 'Location', text: 'São Luís, MA', Icon: MapIcon },
-    { label: 'Age', text: '20', Icon: CalendarIcon },
+    { label: 'Age', text: '22', Icon: CalendarIcon },
     { label: 'Nationality', text: 'Brazilian', Icon: FlagIcon },
     { label: 'Interests', text: 'Tech, Physics, Math', Icon: SparklesIcon },
     { label: 'Study', text: 'State University of Maranhão', Icon: AcademicCapIcon },
