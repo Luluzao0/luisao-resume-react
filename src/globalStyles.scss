@@ -30,14 +30,55 @@ html {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
   height: 100vh;
+  /* Scroll mais fluido */
+  scroll-snap-type: y proximity;
+  overscroll-behavior: smooth;
 }
 
 body {
   position: relative;
   width: 100%;
-  color: #444444;
+  color: #e5e5e5;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;
-  background-color: #fafafa;
+  background-color: #000000;
+  /* Scroll fluido */
+  overflow-x: hidden;
+}
+
+/* Custom selection color */
+::selection {
+  background-color: rgba(96, 165, 250, 0.3);
+  color: #ffffff;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Seções com scroll snap suave */
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
 
 td,
@@ -48,4 +89,36 @@ th {
 
 th {
   font-weight: 600;
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

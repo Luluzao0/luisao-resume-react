@@ -1,16 +1,31 @@
-import {Dialog, Transition} from '@headlessui/react';
-import {Bars3BottomRightIcon} from '@heroicons/react/24/outline';
+import {Bars3BottomRightIcon, XMarkIcon, GlobeAltIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Link from 'next/link';
-import {FC, Fragment, memo, useCallback, useMemo, useState} from 'react';
+import {FC, memo, useCallback, useMemo, useState, useEffect} from 'react';
+import {motion, AnimatePresence} from 'framer-motion';
 
 import {SectionId} from '../../data/data';
 import {useNavObserver} from '../../hooks/useNavObserver';
+import {useLanguage} from '../../context/LanguageContext';
 
 export const headerID = 'headerNav';
 
+// Nav labels translation map
+const navLabels: Record<SectionId, {pt: string; en: string}> = {
+  [SectionId.Hero]: {pt: 'Início', en: 'Home'},
+  [SectionId.About]: {pt: 'Sobre', en: 'About'},
+  [SectionId.Resume]: {pt: 'Currículo', en: 'Resume'},
+  [SectionId.Portfolio]: {pt: 'Portfólio', en: 'Portfolio'},
+  [SectionId.Testimonials]: {pt: 'Depoimentos', en: 'Testimonials'},
+  [SectionId.Contact]: {pt: 'Contato', en: 'Contact'},
+  [SectionId.Skills]: {pt: 'Habilidades', en: 'Skills'},
+  [SectionId.Stats]: {pt: 'Estatísticas', en: 'Stats'},
+};
+
 const Header: FC = memo(() => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  
   const navSections = useMemo(
     () => [SectionId.About, SectionId.Resume, SectionId.Portfolio, SectionId.Testimonials, SectionId.Contact],
     [],
@@ -22,116 +37,213 @@ const Header: FC = memo(() => {
 
   useNavObserver(navSections.map(section => `#${section}`).join(','), intersectionHandler);
 
+  // Detect scroll for navbar background
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
-      <MobileNav currentSection={currentSection} navSections={navSections} />
-      <DesktopNav currentSection={currentSection} navSections={navSections} />
+      <MobileNav currentSection={currentSection} navSections={navSections} scrolled={scrolled} />
+      <DesktopNav currentSection={currentSection} navSections={navSections} scrolled={scrolled} />
     </>
   );
 });
 
-const DesktopNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}> = memo(
-  ({navSections, currentSection}) => {
-    const baseClass =
-      '-m-1.5 p-1.5 rounded-md font-bold first-letter:uppercase hover:transition-colors hover:duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 sm:hover:text-orange-500 text-neutral-100';
-    const activeClass = classNames(baseClass, 'text-orange-500');
-    const inactiveClass = classNames(baseClass, 'text-neutral-100');
+const DesktopNav: FC<{navSections: SectionId[]; currentSection: SectionId | null; scrolled: boolean}> = memo(
+  ({navSections, currentSection, scrolled}) => {
+    const {language, toggleLanguage} = useLanguage();
+    
     return (
-      <header className="fixed top-0 z-50 hidden w-full bg-neutral-900/50 p-4 backdrop-blur sm:block" id={headerID}>
-        <nav className="flex justify-center gap-x-8">
-          {navSections.map(section => (
-            <NavItem
-              activeClass={activeClass}
-              current={section === currentSection}
-              inactiveClass={inactiveClass}
-              key={section}
-              section={section}
-            />
-          ))}
+      <motion.header
+        className={classNames(
+          'fixed top-0 z-50 hidden w-full sm:block transition-all duration-500',
+          scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'
+        )}
+        id={headerID}
+        initial={{y: -100}}
+        animate={{y: 0}}
+        transition={{duration: 0.6, ease: 'easeOut'}}>
+        <nav className="flex items-center justify-between max-w-6xl mx-auto px-6 py-4">
+          {/* Logo */}
+          <motion.a
+            href={`/#${SectionId.Hero}`}
+            className="text-white font-bold text-xl tracking-tighter"
+            whileHover={{scale: 1.05}}
+            whileTap={{scale: 0.95}}>
+            Luis <span className="text-white/60">Lopes</span>
+          </motion.a>
+          
+          {/* Nav Items */}
+          <div className="flex items-center gap-1">
+            {navSections.map((section, index) => (
+              <NavItem
+                key={section}
+                section={section}
+                current={section === currentSection}
+                index={index}
+              />
+            ))}
+            
+            {/* Language Toggle Button */}
+            <motion.button
+              onClick={toggleLanguage}
+              className="ml-4 flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 border border-white/20 text-white/80 hover:bg-white/20 hover:text-white transition-all duration-300"
+              whileHover={{scale: 1.05}}
+              whileTap={{scale: 0.95}}
+              title={language === 'pt' ? 'Switch to English' : 'Mudar para Português'}>
+              <GlobeAltIcon className="h-4 w-4" />
+              <span className="text-sm font-medium uppercase">{language === 'pt' ? 'EN' : 'PT'}</span>
+            </motion.button>
+          </div>
         </nav>
-      </header>
+      </motion.header>
     );
   },
 );
 
-const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}> = memo(
-  ({navSections, currentSection}) => {
+const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null; scrolled: boolean}> = memo(
+  ({navSections, currentSection, scrolled}) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const {language, toggleLanguage} = useLanguage();
 
     const toggleOpen = useCallback(() => {
       setIsOpen(!isOpen);
     }, [isOpen]);
 
-    const baseClass =
-      'p-2 rounded-md first-letter:uppercase transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500';
-    const activeClass = classNames(baseClass, 'bg-neutral-900 text-white font-bold');
-    const inactiveClass = classNames(baseClass, 'text-neutral-200 font-medium');
     return (
       <>
-        <button
+        {/* Language Button - Mobile (top left) */}
+        <motion.button
+          onClick={toggleLanguage}
+          className={classNames(
+            'fixed left-4 top-4 z-50 rounded-full p-3 sm:hidden transition-all duration-300 flex items-center gap-1',
+            scrolled || isOpen ? 'bg-white/10 backdrop-blur-xl border border-white/20' : 'bg-black/30 backdrop-blur-sm'
+          )}
+          whileHover={{scale: 1.1}}
+          whileTap={{scale: 0.9}}>
+          <GlobeAltIcon className="h-5 w-5 text-white" />
+          <span className="text-xs font-medium text-white uppercase">{language === 'pt' ? 'EN' : 'PT'}</span>
+        </motion.button>
+
+        {/* Mobile Menu Button */}
+        <motion.button
           aria-label="Menu Button"
-          className="fixed right-2 top-2 z-40 rounded-md bg-orange-500 p-2 ring-offset-gray-800/60 hover:bg-orange-400 focus:outline-none focus:ring-0 focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 sm:hidden"
-          onClick={toggleOpen}>
-          <Bars3BottomRightIcon className="h-8 w-8 text-white" />
-          <span className="sr-only">Open sidebar</span>
-        </button>
-        <Transition.Root as={Fragment} show={isOpen}>
-          <Dialog as="div" className="fixed inset-0 z-40 flex sm:hidden" onClose={toggleOpen}>
-            <Transition.Child
-              as={Fragment}
-              enter="transition-opacity ease-linear duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition-opacity ease-linear duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0">
-              <Dialog.Overlay className="fixed inset-0 bg-stone-900 bg-opacity-75" />
-            </Transition.Child>
-            <Transition.Child
-              as={Fragment}
-              enter="transition ease-in-out duration-300 transform"
-              enterFrom="-translate-x-full"
-              enterTo="translate-x-0"
-              leave="transition ease-in-out duration-300 transform"
-              leaveFrom="translate-x-0"
-              leaveTo="-translate-x-full">
-              <div className="relative w-4/5 bg-stone-800">
-                <nav className="mt-5 flex flex-col gap-y-2 px-2">
-                  {navSections.map(section => (
-                    <NavItem
-                      activeClass={activeClass}
-                      current={section === currentSection}
-                      inactiveClass={inactiveClass}
-                      key={section}
+          className={classNames(
+            'fixed right-4 top-4 z-50 rounded-full p-3 sm:hidden transition-all duration-300',
+            scrolled || isOpen ? 'bg-white/10 backdrop-blur-xl border border-white/20' : 'bg-black/30 backdrop-blur-sm'
+          )}
+          onClick={toggleOpen}
+          whileHover={{scale: 1.1}}
+          whileTap={{scale: 0.9}}>
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div
+                key="close"
+                initial={{rotate: -90, opacity: 0}}
+                animate={{rotate: 0, opacity: 1}}
+                exit={{rotate: 90, opacity: 0}}
+                transition={{duration: 0.2}}>
+                <XMarkIcon className="h-6 w-6 text-white" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu"
+                initial={{rotate: 90, opacity: 0}}
+                animate={{rotate: 0, opacity: 1}}
+                exit={{rotate: -90, opacity: 0}}
+                transition={{duration: 0.2}}>
+                <Bars3BottomRightIcon className="h-6 w-6 text-white" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.button>
+
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="fixed inset-0 z-40 sm:hidden"
+              initial={{opacity: 0}}
+              animate={{opacity: 1}}
+              exit={{opacity: 0}}
+              transition={{duration: 0.3}}>
+              {/* Backdrop */}
+              <motion.div
+                className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+                onClick={toggleOpen}
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+              />
+              
+              {/* Menu Content */}
+              <motion.nav
+                className="relative h-full flex flex-col items-center justify-center gap-8"
+                initial={{opacity: 0, y: 20}}
+                animate={{opacity: 1, y: 0}}
+                exit={{opacity: 0, y: 20}}
+                transition={{delay: 0.1, duration: 0.3}}>
+                {navSections.map((section, index) => (
+                  <motion.div
+                    key={section}
+                    initial={{opacity: 0, y: 20}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{delay: 0.1 + index * 0.05, duration: 0.3}}>
+                    <Link
+                      href={`/#${section}`}
                       onClick={toggleOpen}
-                      section={section}
-                    />
-                  ))}
-                </nav>
-              </div>
-            </Transition.Child>
-          </Dialog>
-        </Transition.Root>
+                      className={classNames(
+                        'text-3xl font-bold tracking-tighter transition-colors',
+                        section === currentSection ? 'text-white' : 'text-white/60 hover:text-white'
+                      )}>
+                      {navLabels[section][language]}
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </>
     );
   },
 );
 
 const NavItem: FC<{
-  section: string;
+  section: SectionId;
   current: boolean;
-  activeClass: string;
-  inactiveClass: string;
-  onClick?: () => void;
-}> = memo(({section, current, inactiveClass, activeClass, onClick}) => {
+  index: number;
+}> = memo(({section, current, index}) => {
+  const {language} = useLanguage();
+  
   return (
-    <Link
-      className={classNames(current ? activeClass : inactiveClass)}
-      href={`/#${section}`}
-      key={section}
-      onClick={onClick}>
-      {section}
-    </Link>
+    <motion.div
+      initial={{opacity: 0, y: -20}}
+      animate={{opacity: 1, y: 0}}
+      transition={{delay: 0.1 + index * 0.05, duration: 0.5}}>
+      <Link
+        className={classNames(
+          'relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full',
+          current 
+            ? 'text-white' 
+            : 'text-white/60 hover:text-white'
+        )}
+        href={`/#${section}`}>
+        {current && (
+          <motion.div
+            className="absolute inset-0 bg-white/10 rounded-full border border-white/20"
+            layoutId="navbar-indicator"
+            transition={{type: 'spring', stiffness: 500, damping: 30}}
+          />
+        )}
+        <span className="relative z-10">{navLabels[section][language]}</span>
+      </Link>
+    </motion.div>
   );
 });
 

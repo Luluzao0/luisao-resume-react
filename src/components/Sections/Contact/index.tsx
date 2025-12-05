@@ -1,6 +1,6 @@
 import {DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon} from '@heroicons/react/24/outline';
-import classNames from 'classnames';
 import {FC, memo} from 'react';
+import {motion} from 'framer-motion';
 
 import {contact, SectionId} from '../../../data/data';
 import {ContactType, ContactValue} from '../../../data/dataDef';
@@ -10,7 +10,10 @@ import InstagramIcon from '../../Icon/InstagramIcon';
 import LinkedInIcon from '../../Icon/LinkedInIcon';
 import TwitterIcon from '../../Icon/TwitterIcon';
 import Section from '../../Layout/Section';
-//import ContactForm from './ContactForm';
+import {useLanguage} from '../../../context/LanguageContext';
+
+// Same background as Hero for consistency
+const BACKGROUND_IMAGE = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920';
 
 const ContactValueMap: Record<ContactType, ContactValue> = {
   [ContactType.Email]: {Icon: EnvelopeIcon, srLabel: 'Email'},
@@ -24,45 +27,97 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 };
 
 const Contact: FC = memo(() => {
-  const {headerText, description, items} = contact;
+  const {items} = contact;
+  const {t} = useLanguage();
+
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.Contact}>
-      <div className="flex flex-col gap-y-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center">
-          <EnvelopeIcon className="hidden h-16 w-16 text-white md:block" />
-          <h2 className="text-2xl font-bold text-white">{headerText}</h2>
+    <Section noPadding sectionId={SectionId.Contact}>
+      <div className="relative min-h-screen w-full overflow-hidden bg-black">
+        {/* Background Image - same as Hero */}
+        <div className="absolute inset-0">
+          <img
+            src={BACKGROUND_IMAGE}
+            alt="Background"
+            className="absolute z-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90"></div>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="order-1 col-span-1 flex flex-col gap-y-4 md:order-2">
-            <p className="prose leading-6 text-neutral-300">{description}</p>
-            <dl className="flex flex-col space-y-4 text-base text-neutral-500 sm:space-y-2">
-              {items.map(({type, text, href}) => {
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-20">
+          <motion.div
+            className="max-w-4xl w-full text-center"
+            initial={{opacity: 0, y: 30}}
+            whileInView={{opacity: 1, y: 0}}
+            viewport={{once: true}}
+            transition={{duration: 0.8, ease: 'easeOut'}}>
+            
+            {/* Section Header */}
+            <motion.div
+              className="mb-12"
+              initial={{opacity: 0, y: -20}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              transition={{delay: 0.2, duration: 0.8}}>
+              <motion.div 
+                className="inline-flex p-5 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm mb-6"
+                whileHover={{scale: 1.1, rotate: 5}}>
+                <EnvelopeIcon className="h-12 w-12 text-white/80" />
+              </motion.div>
+              <span className="block text-sm uppercase tracking-[0.3em] text-white/60 mb-4">
+                {t('contact.section')}
+              </span>
+              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">
+                {t('contact.title')}
+              </h2>
+              <motion.div
+                className="mt-4 flex items-center justify-center gap-4"
+                initial={{opacity: 0}}
+                whileInView={{opacity: 1}}
+                viewport={{once: true}}
+                transition={{delay: 0.4, duration: 0.8}}>
+                <div className="h-px w-16 bg-white/40"></div>
+                <p className="text-white/60 max-w-md">
+                  {t('contact.subtitle')}
+                </p>
+                <div className="h-px w-16 bg-white/40"></div>
+              </motion.div>
+            </motion.div>
+
+            {/* Contact Items Grid */}
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+              initial={{opacity: 0, y: 20}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              transition={{delay: 0.4, duration: 0.8}}>
+              {items.map(({type, text, href}, index) => {
                 const {Icon, srLabel} = ContactValueMap[type];
                 return (
-                  <div key={srLabel}>
-                    <dt className="sr-only">{srLabel}</dt>
-                    <dd className="flex items-center">
-                      <a
-                        className={classNames(
-                          '-m-2 flex rounded-md p-2 text-neutral-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500',
-                          {'hover:text-white': href},
-                        )}
-                        href={href}
-                        target="_blank">
-                        <Icon aria-hidden="true" className="h-4 w-4 flex-shrink-0 text-neutral-100 sm:h-5 sm:w-5" />
-                        <span className="ml-3 text-sm sm:text-base">{text}</span>
-                      </a>
-                    </dd>
-                  </div>
+                  <motion.a
+                    key={srLabel}
+                    href={href}
+                    target="_blank"
+                    className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-white/80 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group"
+                    initial={{opacity: 0, y: 20}}
+                    whileInView={{opacity: 1, y: 0}}
+                    viewport={{once: true}}
+                    transition={{delay: 0.1 * index, duration: 0.6}}
+                    whileHover={{scale: 1.03, y: -5}}>
+                    <div className="p-3 rounded-xl bg-white/10 group-hover:bg-white/20 transition-colors">
+                      <Icon className="h-6 w-6 text-white/80" />
+                    </div>
+                    <span className="text-left font-medium">{text}</span>
+                  </motion.a>
                 );
               })}
-            </dl>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </Section>
   );
 });
 
-Contact.displayName = 'About';
+Contact.displayName = 'Contact';
 export default Contact;

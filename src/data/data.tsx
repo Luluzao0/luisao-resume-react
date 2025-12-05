@@ -24,7 +24,7 @@ import sistemavenda from '../images/portfolio/sistemavenda.webp'
 import botvotacao from '../images/portfolio/botvotacao.webp';
 import appceuma from '../images/portfolio/appceuma.webp'
 import profilepic from '../images/minhafoto.webp';
-import testimonialImage from '../images/luisao-dev.webp';
+const testimonialImage = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920";
 import pycalculus from '../images/portfolio/pycalculus.webp';
 import fipy from '../images/portfolio/fipy.webp';
 import currency from '../images/portfolio/currency.webp';
