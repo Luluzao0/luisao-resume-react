@@ -1,6 +1,6 @@
 /* eslint-env node */
 module.exports = {
-  siteUrl: 'reactresume.com',
+  siteUrl: 'https://www.devluisao.tech/', // Atualize para seu domínio real
   exclude: ['/404*', '/500*'],
   transform: async (config, path) => {
     return {
@@ -21,6 +21,9 @@ module.exports = {
         userAgent: '*',
         disallow: ['/404', '/500'],
       },
+    ],
+    additionalSitemaps: [
+      'https://www.devluisao.tech/sitemap.xml', // Atualize para seu domínio real
     ],
   },
 };

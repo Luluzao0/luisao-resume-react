@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.devluisao.tech
+
+# Sitemaps
+Sitemap: https://www.devluisao.tech/sitemap.xml
+
+# Block specific pages
+Disallow: /404
+Disallow: /500
+Disallow: /api/

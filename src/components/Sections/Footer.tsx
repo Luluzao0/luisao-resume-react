@@ -27,8 +27,8 @@ const Footer: FC = memo(() => (
       >
         <UserIcon className="h-5 w-5 text-yellow" />
         <span>
-          Provided by <span className="text-white">Luisao</span>
-          <span className="italic text-yellow"> Dev</span>
+          Provided by <span className="text-white">Luis</span>
+          <span className="italic text-yellow"> Lopes</span>
         </span>
       </a>
       <span className="text-sm text-neutral-700">© Copyright {currentYear} Luis Guilherme</span>

@@ -7,13 +7,26 @@ import {Head, Html, Main, NextScript} from 'next/document';
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="pt-BR">
       <Head>
         <meta charSet="utf-8" />
         {/* google translate breaks react:
           - https://github.com/facebook/react/issues/11538
           - https://bugs.chromium.org/p/chromium/issues/detail?id=872770 */}
         <meta content="notranslate" name="google" />
+        
+        {/* SEO básico */}
+        <meta name="theme-color" content="#515455" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        
+        {/* Preconnect para performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* DNS Prefetch */}
+        <link rel="dns-prefetch" href="//github.com" />
+        <link rel="dns-prefetch" href="//linkedin.com" />
       </Head>
       <body className="bg-black">
         <Main />

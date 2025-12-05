@@ -44,8 +44,8 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'LuisaoDev ',
-  description: "this is a portfolio website",
+  title: 'Luis Lopes | Desenvolvedor Full Stack & Engenheiro de Computação',
+  description: "Luis Lopes - Desenvolvedor Full Stack, Engenheiro de Computação, especialista em React, Python, Machine Learning e IA. Portfolio profissional com projetos de desenvolvimento web, mobile e inteligência artificial. São Luís, Maranhão, Brasil.",
 };
 
 /**
@@ -103,7 +103,7 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `LuisaoDev. Welcome to my corner of the web! With years in professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at Technos Engenharia  , São Luís / TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
+  description: `Luis Lopes. Welcome to my corner of the web! With years in professional journey, I specialize in crafting innovative solutions to software challenges. Proficient in agile methodologies, I possess extensive knowledge of leading web development languages and technologies. Worked as a Software Developer at Technos Engenharia, São Luís / TELUS International, Vancouver, focusing on responsive page development, performance optimization, and rigorous testing. Holds a degree in Computer Engineering from Universidade Estadual Do Maranhão, with a current research focus on enhancing web system and database performance at the Signal Processing Laboratory (LAPS).
 `,
   aboutItems: [
     { label: 'Location', text: 'São Luís, MA', Icon: MapIcon },
@@ -428,12 +428,12 @@ export const testimonial: TestimonialSection = {
     },
     {
       name: 'Matheus Machado Santos',
-      text: 'If you are looking to dive into the world of intelligent systems, trust me, LuisaoDev, Python is your guide to learn. Its got the libraries, the community, and the magic touch to make your projects soar! 🚀',
+      text: 'If you are looking to dive into the world of intelligent systems, trust me, Luis Lopes, Python is your guide to learn. Its got the libraries, the community, and the magic touch to make your projects soar! 🚀',
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
     },
     {
       name: 'Patrick Melo',
-      text: 'LuisaoDev is a multifaceted and dynamic professional who operates at the intersection of web development, machine learning, and artificial intelligence. With a passion for leveraging cutting-edge technologies to create innovative solutions, LuisaoDev has established a reputation for delivering high-quality projects that seamlessly integrate these diverse fields.',
+      text: 'Luis Lopes is a multifaceted and dynamic professional who operates at the intersection of web development, machine learning, and artificial intelligence. With a passion for leveraging cutting-edge technologies to create innovative solutions, Luis Lopes has established a reputation for delivering high-quality projects that seamlessly integrate these diverse fields.',
       //image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
     },
   ],
