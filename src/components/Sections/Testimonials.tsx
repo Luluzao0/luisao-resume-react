@@ -160,7 +160,7 @@ const Testimonials: FC = memo(() => {
         <FloatingParticles />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-[700px] px-6 py-20">
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-[700px] px-4 py-16 sm:px-6 sm:py-20">
           <motion.div
             className="max-w-5xl w-full"
             initial={{opacity: 0, y: 30}}
@@ -178,7 +178,7 @@ const Testimonials: FC = memo(() => {
               <span className="inline-block text-sm uppercase tracking-[0.3em] text-white/60 border-l-2 border-white/40 pl-4 mb-4">
                 {t('testimonials.section')}
               </span>
-              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tighter">
                 {t('testimonials.title').split('').map((char, i) => (
                   <motion.span
                     key={i}
@@ -204,7 +204,7 @@ const Testimonials: FC = memo(() => {
 
             {/* Testimonial Card with glassmorphism */}
             <motion.div
-              className="relative p-8 md:p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden"
+              className="relative p-6 sm:p-8 md:p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md overflow-hidden"
               initial={{opacity: 0, scale: 0.95}}
               whileInView={{opacity: 1, scale: 1}}
               viewport={{once: true}}
@@ -237,19 +237,19 @@ const Testimonials: FC = memo(() => {
               </div>
 
               {/* Navigation Controls */}
-              <div className="flex items-center justify-between mt-10">
+              <div className="flex flex-col gap-6 mt-8 sm:mt-10 sm:flex-row sm:items-center sm:justify-between">
                 {/* Navigation Arrows */}
                 <div className="flex gap-3">
                   <motion.button
                     onClick={prev}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-white/10 hover:border-white/40 transition-all"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-white/10 hover:border-white/40 transition-all"
                     whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.95}}>
                     <ChevronLeft className="w-5 h-5" />
                   </motion.button>
                   <motion.button
                     onClick={next}
-                    className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-white/10 hover:border-white/40 transition-all"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-white/10 hover:border-white/40 transition-all"
                     whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.95}}>
                     <ChevronRight className="w-5 h-5" />
@@ -257,7 +257,7 @@ const Testimonials: FC = memo(() => {
                 </div>
 
                 {/* Dots */}
-                <div className="flex gap-3">
+                <div className="flex gap-2 sm:gap-3">
                   {testimonials.map((_, index) => {
                     const isActive = index === activeIndex;
                     return (
@@ -324,7 +324,7 @@ const TestimonialItem: FC<{testimonial: TestimonialType; isActive: boolean; inde
       
       {/* Quote Text */}
       <div className="text-center max-w-2xl">
-        <p className="text-lg md:text-xl lg:text-2xl font-medium italic text-white/80 leading-relaxed">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium italic text-white/80 leading-relaxed">
           "{text}"
         </p>
       </div>

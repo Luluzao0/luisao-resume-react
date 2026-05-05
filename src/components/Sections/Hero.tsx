@@ -76,7 +76,7 @@ const Hero: FC = memo(() => {
 
   return (
     <Section noPadding sectionId={SectionId.Hero}>
-      <div className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-black">
+      <div className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black sm:min-h-screen">
         {/* Animated Background Image with Parallax - usando imagem do newstyle */}
         <motion.div
           className="absolute inset-0"
@@ -98,9 +98,9 @@ const Hero: FC = memo(() => {
         <FloatingParticles />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
+        <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-4 sm:min-h-screen sm:px-6">
           <motion.div
-            className="max-w-4xl w-full space-y-8"
+            className="max-w-4xl w-full space-y-6 sm:space-y-8"
             initial={{opacity: 0, y: 30}}
             animate={{opacity: 1, y: 0}}
             transition={{duration: 1, ease: 'easeOut'}}>
@@ -117,7 +117,7 @@ const Hero: FC = memo(() => {
 
             {/* Main Name with stagger effect */}
             <div className="overflow-hidden">
-              <motion.h1 className="text-6xl md:text-8xl lg:text-9xl tracking-tighter text-white leading-[0.9] font-bold">
+              <motion.h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl tracking-tighter text-white leading-[0.9] font-bold">
                 {'Luis Lopes'.split('').map((char, i) => (
                   <motion.span
                     key={i}
@@ -142,7 +142,7 @@ const Hero: FC = memo(() => {
 
             {/* Subtitle with line animation */}
             <motion.div
-              className="flex items-center gap-4"
+              className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4"
               initial={{opacity: 0}}
               animate={{opacity: 1}}
               transition={{delay: 1.2, duration: 0.8}}>
@@ -152,7 +152,7 @@ const Hero: FC = memo(() => {
                 animate={{width: 60}}
                 transition={{delay: 1.4, duration: 0.8}}
               />
-              <p className="text-xl md:text-2xl text-white/80 tracking-wide">Full Stack Developer</p>
+              <p className="text-lg sm:text-xl md:text-2xl text-white/80 tracking-wide">Full Stack Developer</p>
             </motion.div>
 
             {/* Description */}
@@ -189,7 +189,7 @@ const Hero: FC = memo(() => {
 
             {/* Social Links with hover effects */}
             <motion.div
-              className="flex gap-4 pt-4"
+              className="flex flex-wrap items-center justify-center gap-3 pt-4 sm:justify-start sm:gap-4"
               initial={{opacity: 0, y: 20}}
               animate={{opacity: 1, y: 0}}
               transition={{delay: 1.8, duration: 0.8}}>
@@ -201,7 +201,7 @@ const Hero: FC = memo(() => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white/60 overflow-hidden"
+                    className="group relative h-12 w-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 overflow-hidden sm:h-14 sm:w-14"
                     whileHover={{scale: 1.1, borderColor: 'rgba(255,255,255,0.6)'}}
                     whileTap={{scale: 0.95}}>
                     <motion.div
@@ -218,7 +218,7 @@ const Hero: FC = memo(() => {
 
             {/* Action buttons */}
             <motion.div
-              className="flex gap-4 pt-4"
+              className="flex w-full flex-col gap-3 pt-4 sm:flex-row sm:flex-wrap sm:gap-4"
               initial={{opacity: 0, y: 20}}
               animate={{opacity: 1, y: 0}}
               transition={{delay: 2, duration: 0.8}}>
@@ -227,7 +227,7 @@ const Hero: FC = memo(() => {
                   key={text}
                   href={href}
                   className={classNames(
-                    'flex gap-x-2 items-center px-6 py-3 rounded-full text-sm font-medium transition-all',
+                    'flex w-full justify-center gap-x-2 items-center px-6 py-3 rounded-full text-sm font-medium transition-all sm:w-auto',
                     primary
                       ? 'bg-white text-black hover:bg-white/90'
                       : 'border border-white/30 text-white hover:bg-white/10',
@@ -243,7 +243,7 @@ const Hero: FC = memo(() => {
 
           {/* Scroll indicator */}
           <motion.div
-            className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:bottom-12"
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             transition={{delay: 2.2, duration: 0.8}}>

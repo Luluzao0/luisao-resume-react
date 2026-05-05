@@ -53,7 +53,7 @@ const About: FC = memo(() => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-20">
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-16 sm:px-6 sm:py-20">
           <motion.div
             className="max-w-5xl w-full"
             initial={{opacity: 0, y: 30}}
@@ -71,13 +71,13 @@ const About: FC = memo(() => {
               <span className="inline-block text-sm uppercase tracking-[0.3em] text-white/60 border-l-2 border-white/40 pl-4 mb-4">
                 {t('about.section')}
               </span>
-              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tighter">
                 {t('about.title')}
               </h2>
             </motion.div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 items-start">
               {/* Profile Image */}
               {profileImageSrc && (
                 <motion.div
@@ -88,7 +88,7 @@ const About: FC = memo(() => {
                   transition={{delay: 0.3, duration: 0.8}}>
                   <div className="relative">
                     <div className="absolute -inset-4 bg-gradient-to-br from-white/20 to-transparent rounded-3xl blur-xl"></div>
-                    <div className="relative h-56 w-56 md:h-64 md:w-64 overflow-hidden rounded-2xl ring-2 ring-white/30">
+                    <div className="relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 overflow-hidden rounded-2xl ring-2 ring-white/30">
                       <Image 
                         alt="about-me-image" 
                         className="h-full w-full object-cover" 

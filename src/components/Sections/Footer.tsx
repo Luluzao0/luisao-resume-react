@@ -73,7 +73,7 @@ const Footer: FC = memo(() => {
   };
 
   return (
-    <div className="relative overflow-visible min-h-[400px] pt-16">
+    <div className="relative overflow-visible min-h-[400px] pt-12 sm:pt-16">
       {/* Animated Background Image with Parallax - same as Hero */}
       <motion.div
         className="absolute inset-0"
@@ -106,7 +106,7 @@ const Footer: FC = memo(() => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-4 pb-10 pt-20 sm:px-8 sm:pb-12 sm:pt-24">
+      <div className="relative z-10 px-4 pb-10 pt-16 sm:px-8 sm:pb-12 sm:pt-24">
         <motion.div
           className="flex flex-col items-center gap-y-10"
           initial={{opacity: 0, y: 30}}
@@ -122,7 +122,7 @@ const Footer: FC = memo(() => {
             viewport={{once: true}}
             transition={{delay: 0.2, duration: 0.8}}>
             <motion.h3 
-              className="text-4xl md:text-5xl font-bold text-white tracking-tighter"
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tighter"
               whileHover={{scale: 1.05}}>
               {'Luis Lopes'.split('').map((char, i) => (
                 <motion.span
@@ -151,7 +151,7 @@ const Footer: FC = memo(() => {
 
           {/* Social Links */}
           <motion.div 
-            className="flex gap-x-5"
+            className="flex flex-wrap justify-center gap-x-4 gap-y-3"
             initial={{opacity: 0, y: 20}}
             whileInView={{opacity: 1, y: 0}}
             viewport={{once: true}}
@@ -164,7 +164,7 @@ const Footer: FC = memo(() => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white/60 overflow-hidden backdrop-blur-sm"
+                  className="group relative h-12 w-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 overflow-hidden backdrop-blur-sm sm:h-14 sm:w-14"
                   whileHover={{scale: 1.15, borderColor: 'rgba(255,255,255,0.6)'}}
                   whileTap={{scale: 0.95}}
                   initial={{opacity: 0, y: 20}}

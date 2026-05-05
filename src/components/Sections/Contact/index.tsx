@@ -44,7 +44,7 @@ const Contact: FC = memo(() => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-20">
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-16 sm:px-6 sm:py-20">
           <motion.div
             className="max-w-4xl w-full text-center"
             initial={{opacity: 0, y: 30}}
@@ -67,7 +67,7 @@ const Contact: FC = memo(() => {
               <span className="block text-sm uppercase tracking-[0.3em] text-white/60 mb-4">
                 {t('contact.section')}
               </span>
-              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tighter">
                 {t('contact.title')}
               </h2>
               <motion.div
@@ -98,7 +98,7 @@ const Contact: FC = memo(() => {
                     key={srLabel}
                     href={href}
                     target="_blank"
-                    className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-white/80 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-white/80 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group"
                     initial={{opacity: 0, y: 20}}
                     whileInView={{opacity: 1, y: 0}}
                     viewport={{once: true}}

@@ -62,6 +62,16 @@ section {
   scroll-snap-stop: normal;
 }
 
+@media (max-width: 640px) {
+  html {
+    scroll-snap-type: none;
+  }
+
+  section {
+    scroll-snap-align: none;
+  }
+}
+
 /* Custom scrollbar for dark theme */
 ::-webkit-scrollbar {
   width: 6px;

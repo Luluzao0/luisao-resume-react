@@ -110,7 +110,7 @@ const Resume: FC = memo(() => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center px-6 py-20">
+        <div className="relative z-10 flex flex-col items-center px-4 py-16 sm:px-6 sm:py-20">
           <motion.div
             className="max-w-5xl w-full"
             initial={{opacity: 0, y: 30}}
@@ -128,7 +128,7 @@ const Resume: FC = memo(() => {
               <span className="inline-block text-sm uppercase tracking-[0.3em] text-white/60 border-l-2 border-white/40 pl-4 mb-4">
                 {t('resume.section')}
               </span>
-              <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tighter">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white tracking-tighter">
                 {t('resume.title')}
               </h2>
             </motion.div>
@@ -150,7 +150,7 @@ const Resume: FC = memo(() => {
                 <h3 className="text-2xl font-bold text-white">{t('resume.education')}</h3>
                 <div className="flex-1 h-px bg-white/20"></div>
               </div>
-              <div className="space-y-4 pl-4 border-l-2 border-white/20">
+              <div className="space-y-4 pl-3 sm:pl-4 border-l-2 border-white/20">
                 {translatedEducation.map((item, index) => (
                   <TimelineItem key={index} item={item} index={index} />
                 ))}
@@ -173,7 +173,7 @@ const Resume: FC = memo(() => {
                 <h3 className="text-2xl font-bold text-white">{t('resume.experience')}</h3>
                 <div className="flex-1 h-px bg-white/20"></div>
               </div>
-              <div className="space-y-4 pl-4 border-l-2 border-white/20">
+              <div className="space-y-4 pl-3 sm:pl-4 border-l-2 border-white/20">
                 {translatedExperience.map((item, index) => (
                   <TimelineItem key={index} item={item} index={index} />
                 ))}
@@ -195,7 +195,7 @@ const Resume: FC = memo(() => {
                 <h3 className="text-2xl font-bold text-white">{t('resume.skills')}</h3>
                 <div className="flex-1 h-px bg-white/20"></div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                 {translatedSkills.map((skillGroup, index) => (
                   <motion.div
                     key={index}
@@ -240,14 +240,14 @@ const Resume: FC = memo(() => {
 const TimelineItem: FC<{item: {title: string; date: string; location: string; content: React.ReactNode}; index: number}> = ({item, index}) => {
   return (
     <motion.div
-      className="relative p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm ml-4 group"
+      className="relative p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm ml-3 sm:ml-4 group"
       initial={{opacity: 0, x: -20}}
       whileInView={{opacity: 1, x: 0}}
       viewport={{once: true}}
       transition={{delay: 0.1 * index, duration: 0.6}}
       whileHover={{borderColor: 'rgba(255,255,255,0.3)', x: 5}}>
       {/* Dot */}
-      <div className="absolute -left-[26px] top-8 w-4 h-4 rounded-full bg-white border-4 border-black"></div>
+      <div className="absolute -left-[24px] top-8 w-4 h-4 rounded-full bg-white border-4 border-black sm:-left-[26px]"></div>
       
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
         <h4 className="text-lg font-bold text-white">{item.title}</h4>
