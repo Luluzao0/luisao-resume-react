@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  color: #e5e5e5;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Ubuntu,
+    'Helvetica Neue',
+    sans-serif;
+  background-color: #000;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: rgba(96, 165, 250, 0.3);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 3px;
+}
+
+/* Dark scrollbar */
+html {
+  scrollbar-color: #333 #0a0a0a;
+}
+
+/* Hero entrance: CSS-only so content shows before hydration. `backwards` keeps hover transforms working after. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.rise {
+  animation: rise 0.7s ease-out backwards;
+}
+
+.fade {
+  animation: fade 0.8s ease-out backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .fade {
+    animation: none;
+  }
+}

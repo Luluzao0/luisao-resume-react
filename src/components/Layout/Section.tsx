@@ -1,24 +1,38 @@
 import classNames from 'classnames';
-import {FC, memo, PropsWithChildren} from 'react';
 import {motion} from 'framer-motion';
+import {FC, memo, PropsWithChildren} from 'react';
 
-import {SectionId} from '../../data/data';
+import {L, SectionId} from '../../data/content';
+import {useLanguage} from '../../context/LanguageContext';
 
-const Section: FC<
-  PropsWithChildren<{sectionId: SectionId; sectionTitle?: string; noPadding?: boolean; className?: string}>
-> = memo(({children, sectionId, noPadding = false, className}) => {
-  return (
-    <motion.section 
-      className={classNames(className, {'px-4 py-16 md:py-24 lg:px-8': !noPadding})} 
-      id={sectionId}
-      initial={{opacity: 0}}
-      whileInView={{opacity: 1}}
-      viewport={{once: true, margin: '-50px'}}
-      transition={{duration: 0.8, ease: 'easeOut' as const}}>
-      <div className={classNames({'mx-auto max-w-screen-lg': !noPadding})}>{children}</div>
-    </motion.section>
-  );
-});
+export const reveal = {
+  initial: {opacity: 0, y: 24},
+  whileInView: {opacity: 1, y: 0},
+  viewport: {once: true, margin: '-60px'},
+  transition: {duration: 0.6, ease: 'easeOut'},
+} as const;
+
+export const card = 'rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm';
+export const chip = 'rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-white/70';
+
+const Section: FC<PropsWithChildren<{id: SectionId; eyebrow: L; title: L; className?: string}>> = memo(
+  ({id, eyebrow, title, className, children}) => {
+    const {t} = useLanguage();
+    return (
+      <section className={classNames('scroll-mt-16 px-4 py-24 sm:px-6 sm:py-32', className)} id={id}>
+        <div className="mx-auto max-w-5xl">
+          <motion.header className="mb-12 sm:mb-16" {...reveal}>
+            <p className="mb-4 border-l-2 border-white/40 pl-4 text-sm uppercase tracking-[0.3em] text-white/60">
+              {t(eyebrow)}
+            </p>
+            <h2 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-7xl">{t(title)}</h2>
+          </motion.header>
+          {children}
+        </div>
+      </section>
+    );
+  },
+);
 
 Section.displayName = 'Section';
 export default Section;
