@@ -6,6 +6,7 @@ import {Quote, ChevronLeft, ChevronRight} from 'lucide-react';
 import {SectionId, testimonial} from '../../data/data';
 import {Testimonial as TestimonialType} from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
+import useMouseParallax from '../../hooks/useMouseParallax';
 import useWindow from '../../hooks/useWindow';
 import Section from '../Layout/Section';
 import {useLanguage} from '../../context/LanguageContext';
@@ -55,7 +56,7 @@ const FloatingParticles: FC = () => {
 const Testimonials: FC = memo(() => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [scrollValue, setScrollValue] = useState(0);
-  const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
+  const parallax = useMouseParallax(15);
   const {t} = useLanguage();
 
   const itemWidth = useRef(0);
@@ -88,18 +89,6 @@ const Testimonials: FC = memo(() => {
       setActiveIndex(newIndex);
     }
   }, [scrollValue]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 15,
-        y: (e.clientY / window.innerHeight - 0.5) * 15,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   const setTestimonial = useCallback(
     (index: number) => () => {
@@ -140,17 +129,12 @@ const Testimonials: FC = memo(() => {
     <Section noPadding sectionId={SectionId.Testimonials}>
       <div className="relative min-h-[700px] w-full overflow-hidden bg-black">
         {/* Animated Background Image with Parallax - same as Hero */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            x: mousePosition.x,
-            y: mousePosition.y,
-            scale: 1.1,
-          }}
-          transition={{type: 'spring', stiffness: 50, damping: 30}}>
+        <motion.div className="absolute inset-0" style={{...parallax, scale: 1.1}}>
           <img
             src={resolveSrc || BACKGROUND_IMAGE}
-            alt="Background"
+            alt=""
+            loading="lazy"
+            decoding="async"
             className="absolute z-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90"></div>
@@ -242,6 +226,7 @@ const Testimonials: FC = memo(() => {
                 <div className="flex gap-3">
                   <motion.button
                     onClick={prev}
+                    aria-label="Previous"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-white/10 hover:border-white/40 transition-all"
                     whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.95}}>
@@ -249,6 +234,7 @@ const Testimonials: FC = memo(() => {
                   </motion.button>
                   <motion.button
                     onClick={next}
+                    aria-label="Next"
                     className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:bg-white/10 hover:border-white/40 transition-all"
                     whileHover={{scale: 1.1}}
                     whileTap={{scale: 0.95}}>
@@ -269,6 +255,7 @@ const Testimonials: FC = memo(() => {
                         )}
                         disabled={isActive}
                         onClick={setTestimonial(index)}
+                        aria-label={`${index + 1}`}
                         whileHover={{scale: isActive ? 1 : 1.2}}
                       />
                     );

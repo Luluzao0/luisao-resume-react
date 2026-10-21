@@ -16,13 +16,12 @@ export default function Document() {
         <meta content="notranslate" name="google" />
         
         {/* SEO básico */}
-        <meta name="theme-color" content="#515455" />
+        <meta name="theme-color" content="#000000" />
         <meta name="format-detection" content="telephone=no" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         
         {/* Preconnect para performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
         
         {/* DNS Prefetch */}
         <link rel="dns-prefetch" href="//github.com" />

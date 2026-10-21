@@ -154,7 +154,7 @@ const Portfolio: FC = memo(() => {
         <div className="absolute inset-0">
           <img
             src={BACKGROUND_IMAGE}
-            alt="Background"
+            alt="" loading="lazy" decoding="async"
             className="absolute z-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/90"></div>

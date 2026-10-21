@@ -103,7 +103,7 @@ const Resume: FC = memo(() => {
         <div className="absolute inset-0">
           <img
             src={BACKGROUND_IMAGE}
-            alt="Background"
+            alt="" loading="lazy" decoding="async"
             className="absolute z-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90"></div>

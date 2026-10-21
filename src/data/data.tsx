@@ -44,6 +44,9 @@ import {
   TimelineItem,
 } from './dataDef';
 
+// Public URL of the site (no trailing slash). The old devluisao.tech domain no longer resolves.
+export const siteUrl = 'https://luisao-resume-react.vercel.app';
+
 /**
  * Page meta data
  */

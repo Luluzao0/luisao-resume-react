@@ -1,6 +1,6 @@
 /* eslint-env node */
 module.exports = {
-  siteUrl: 'https://www.devluisao.tech/', // Atualize para seu domínio real
+  siteUrl: 'https://luisao-resume-react.vercel.app/',
   exclude: ['/404*', '/500*'],
   transform: async (config, path) => {
     return {
@@ -23,7 +23,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://www.devluisao.tech/sitemap.xml', // Atualize para seu domínio real
+      'https://luisao-resume-react.vercel.app/sitemap.xml',
     ],
   },
 };

@@ -46,7 +46,7 @@ const About: FC = memo(() => {
         <div className="absolute inset-0">
           <img
             src={BACKGROUND_IMAGE}
-            alt="Background"
+            alt="" loading="lazy" decoding="async"
             className="absolute z-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90"></div>
@@ -90,10 +90,11 @@ const About: FC = memo(() => {
                     <div className="absolute -inset-4 bg-gradient-to-br from-white/20 to-transparent rounded-3xl blur-xl"></div>
                     <div className="relative h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 overflow-hidden rounded-2xl ring-2 ring-white/30">
                       <Image 
-                        alt="about-me-image" 
-                        className="h-full w-full object-cover" 
-                        src={profileImageSrc} 
-                        fill 
+                        alt="Luis Lopes"
+                        className="h-full w-full object-cover"
+                        src={profileImageSrc}
+                        fill
+                        sizes="(min-width: 768px) 256px, (min-width: 640px) 224px, 192px"
                       />
                     </div>
                   </div>

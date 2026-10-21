@@ -37,7 +37,7 @@ const Contact: FC = memo(() => {
         <div className="absolute inset-0">
           <img
             src={BACKGROUND_IMAGE}
-            alt="Background"
+            alt="" loading="lazy" decoding="async"
             className="absolute z-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90"></div>
@@ -98,6 +98,7 @@ const Contact: FC = memo(() => {
                     key={srLabel}
                     href={href}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-4 p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-white/80 hover:bg-white/10 hover:border-white/30 transition-all duration-300 group"
                     initial={{opacity: 0, y: 20}}
                     whileInView={{opacity: 1, y: 0}}

@@ -7,6 +7,7 @@ import {heroData, SectionId, socialLinks} from '../../data/data';
 import Section from '../Layout/Section';
 import {ImgWithFallback} from '../ImageWithFallback';
 import {useLanguage} from '../../context/LanguageContext';
+import useMouseParallax from '../../hooks/useMouseParallax';
 
 // Background image from newstyle
 const BACKGROUND_IMAGE = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920';
@@ -52,20 +53,8 @@ const FloatingParticles: FC = () => {
 
 const Hero: FC = memo(() => {
   const {actions} = heroData;
-  const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
+  const parallax = useMouseParallax(20);
   const {t} = useLanguage();
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   // Map social links to icons
   const socialIcons: {[key: string]: React.ElementType} = {
@@ -78,17 +67,10 @@ const Hero: FC = memo(() => {
     <Section noPadding sectionId={SectionId.Hero}>
       <div className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black sm:min-h-screen">
         {/* Animated Background Image with Parallax - usando imagem do newstyle */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            x: mousePosition.x,
-            y: mousePosition.y,
-            scale: 1.1,
-          }}
-          transition={{type: 'spring', stiffness: 50, damping: 30}}>
+        <motion.div className="absolute inset-0" style={{...parallax, scale: 1.1}}>
           <ImgWithFallback
             src={BACKGROUND_IMAGE}
-            alt="Background"
+            alt=""
             className="absolute z-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
@@ -152,7 +134,7 @@ const Hero: FC = memo(() => {
                 animate={{width: 60}}
                 transition={{delay: 1.4, duration: 0.8}}
               />
-              <p className="text-lg sm:text-xl md:text-2xl text-white/80 tracking-wide">Full Stack Developer</p>
+              <p className="text-lg sm:text-xl md:text-2xl text-white/80 tracking-wide">{t('hero.subtitle')}</p>
             </motion.div>
 
             {/* Description */}
@@ -183,7 +165,7 @@ const Hero: FC = memo(() => {
   {/* Linha 3: O Resultado (Output) */}
   <div className="border-t border-white/10 pt-2 mt-2 text-white/80 flex items-center gap-2">
     <span className="text-green-500 text-xs">➜</span>
-    <span>"Hello world, I'm Luis!"</span>
+    <span>"{t('hero.greeting')}"</span>
   </div>
 </motion.div>
 
@@ -201,6 +183,7 @@ const Hero: FC = memo(() => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.label}
                     className="group relative h-12 w-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 overflow-hidden sm:h-14 sm:w-14"
                     whileHover={{scale: 1.1, borderColor: 'rgba(255,255,255,0.6)'}}
                     whileTap={{scale: 0.95}}>
@@ -234,7 +217,7 @@ const Hero: FC = memo(() => {
                   )}
                   whileHover={{scale: 1.05}}
                   whileTap={{scale: 0.95}}>
-                  {text}
+                  {t(`hero.${text.toLowerCase()}`)}
                   {Icon && <Icon className="h-5 w-5" />}
                 </motion.a>
               ))}
@@ -247,8 +230,9 @@ const Hero: FC = memo(() => {
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             transition={{delay: 2.2, duration: 0.8}}>
-            <span className="text-xs text-white/40 uppercase tracking-widest">Scroll</span>
+            <span className="text-xs text-white/40 uppercase tracking-widest">{t('hero.scroll')}</span>
             <motion.a
+              aria-label={t('hero.scroll')}
               href={`/#${SectionId.About}`}
               animate={{y: [0, 10, 0]}}
               transition={{duration: 1.5, repeat: Infinity}}>

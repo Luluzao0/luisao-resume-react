@@ -3,11 +3,11 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {memo, PropsWithChildren} from 'react';
 
+import {siteUrl} from '../../data/data';
 import {HomepageMeta} from '../../data/dataDef';
 
 const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({children, title, description}) => {
-  const {asPath: pathname} = useRouter();
-  const siteUrl = 'https://www.devluisao.tech/'; // Atualize para seu domínio real
+  const {pathname} = useRouter();
 
   return (
     <>
@@ -31,8 +31,6 @@ const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({children, title, 
         {/* Canonical URL */}
         <link href={`${siteUrl}${pathname}`} key="canonical" rel="canonical" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-        <link href="/icon.svg" rel="icon" type="image/svg+xml" />
-        <link href="/apple-touch-icon.png" rel="apple-touch-icon" />
         <link href="/site.webmanifest" rel="manifest" />
 
         {/* Open Graph : https://ogp.me/ */}
@@ -53,7 +51,6 @@ const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({children, title, 
         <meta content={title} name="twitter:title" />
         <meta content={description} name="twitter:description" />
         <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
-        <meta name="twitter:creator" content="@luislopes" />
 
         {/* Schema.org structured data for Person */}
         <script
@@ -65,7 +62,7 @@ const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({children, title, 
               "name": "Luis Lopes",
               "alternateName": ["Luis Guilherme Lopes", "Luis Guilherme", "Luís Lopes", "Luís Guilherme Lopes"],
               "url": siteUrl,
-              "image": `${siteUrl}/profile-image.jpg`,
+              "image": `${siteUrl}/og-image.jpg`,
               "jobTitle": ["Desenvolvedor Full Stack", "Full Stack Developer", "Engenheiro de Computação", "Computer Engineer", "Software Developer"],
               "worksFor": [
                 {
@@ -110,11 +107,6 @@ const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({children, title, 
               "author": {
                 "@type": "Person",
                 "name": "Luis Lopes"
-              },
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": `${siteUrl}/?s={search_term_string}`,
-                "query-input": "required name=search_term_string"
               }
             })
           }}

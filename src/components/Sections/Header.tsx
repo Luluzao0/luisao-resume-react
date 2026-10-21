@@ -95,6 +95,7 @@ const DesktopNav: FC<{navSections: SectionId[]; currentSection: SectionId | null
               className="ml-4 flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 border border-white/20 text-white/80 hover:bg-white/20 hover:text-white transition-all duration-300"
               whileHover={{scale: 1.05}}
               whileTap={{scale: 0.95}}
+              aria-label={language === 'pt' ? 'Switch to English' : 'Mudar para Português'}
               title={language === 'pt' ? 'Switch to English' : 'Mudar para Português'}>
               <GlobeAltIcon className="h-4 w-4" />
               <span className="text-sm font-medium uppercase">{language === 'pt' ? 'EN' : 'PT'}</span>
@@ -125,14 +126,16 @@ const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null;
             scrolled || isOpen ? 'bg-white/10 backdrop-blur-xl border border-white/20' : 'bg-black/30 backdrop-blur-sm'
           )}
           whileHover={{scale: 1.1}}
-          whileTap={{scale: 0.9}}>
+          whileTap={{scale: 0.9}}
+          aria-label={language === 'pt' ? 'Switch to English' : 'Mudar para Português'}>
           <GlobeAltIcon className="h-5 w-5 text-white" />
           <span className="text-xs font-medium text-white uppercase">{language === 'pt' ? 'EN' : 'PT'}</span>
         </motion.button>
 
         {/* Mobile Menu Button */}
         <motion.button
-          aria-label="Menu Button"
+          aria-label="Menu"
+          aria-expanded={isOpen}
           className={classNames(
             'fixed right-4 top-4 z-50 rounded-full p-3 sm:hidden transition-all duration-300',
             scrolled || isOpen ? 'bg-white/10 backdrop-blur-xl border border-white/20' : 'bg-black/30 backdrop-blur-sm'

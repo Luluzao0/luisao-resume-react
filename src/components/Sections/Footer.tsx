@@ -5,6 +5,7 @@ import {Github, Linkedin, Mail, Heart} from 'lucide-react';
 
 import {SectionId, socialLinks} from '../../data/data';
 import {useLanguage} from '../../context/LanguageContext';
+import useMouseParallax from '../../hooks/useMouseParallax';
 
 // Same background as Hero for consistency
 const BACKGROUND_IMAGE = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920';
@@ -52,19 +53,7 @@ const FloatingParticles: FC = () => {
 
 const Footer: FC = memo(() => {
   const {t} = useLanguage();
-  const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth - 0.5) * 10,
-        y: (e.clientY / window.innerHeight - 0.5) * 10,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  const parallax = useMouseParallax(10);
 
   const socialIcons: {[key: string]: React.ElementType} = {
     Github: Github,
@@ -75,17 +64,12 @@ const Footer: FC = memo(() => {
   return (
     <div className="relative overflow-visible min-h-[400px] pt-12 sm:pt-16">
       {/* Animated Background Image with Parallax - same as Hero */}
-      <motion.div
-        className="absolute inset-0"
-        animate={{
-          x: mousePosition.x,
-          y: mousePosition.y,
-          scale: 1.1,
-        }}
-        transition={{type: 'spring', stiffness: 50, damping: 30}}>
+      <motion.div className="absolute inset-0" style={{...parallax, scale: 1.1}}>
         <img
           src={BACKGROUND_IMAGE}
-          alt="Background"
+          alt=""
+          loading="lazy"
+          decoding="async"
           className="absolute z-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/95 to-black/85"></div>
@@ -97,6 +81,7 @@ const Footer: FC = memo(() => {
       {/* Back to top button - VISÍVEL */}
       <div className="absolute inset-x-0 -top-6 flex justify-center z-20">
         <motion.a
+          aria-label={t('footer.top')}
           className="rounded-full bg-white p-3 shadow-lg shadow-white/20 hover:shadow-xl hover:shadow-white/30 transition-shadow"
           href={`/#${SectionId.Hero}`}
           whileHover={{scale: 1.15, y: -5}}
@@ -144,7 +129,7 @@ const Footer: FC = memo(() => {
               viewport={{once: true}}
               transition={{delay: 0.4, duration: 0.8}}>
               <div className="h-px w-12 bg-white/30"></div>
-              <p className="text-sm text-white/50 tracking-widest uppercase">Full Stack Developer</p>
+              <p className="text-sm text-white/50 tracking-widest uppercase">{t('hero.subtitle')}</p>
               <div className="h-px w-12 bg-white/30"></div>
             </motion.div>
           </motion.div>
@@ -164,6 +149,7 @@ const Footer: FC = memo(() => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="group relative h-12 w-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 overflow-hidden backdrop-blur-sm sm:h-14 sm:w-14"
                   whileHover={{scale: 1.15, borderColor: 'rgba(255,255,255,0.6)'}}
                   whileTap={{scale: 0.95}}

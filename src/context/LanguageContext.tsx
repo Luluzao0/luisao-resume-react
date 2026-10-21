@@ -1,4 +1,4 @@
-import {createContext, useContext, useState, FC, ReactNode, useCallback} from 'react';
+import {createContext, useContext, useEffect, useState, FC, ReactNode, useCallback} from 'react';
 
 type Language = 'pt' | 'en';
 
@@ -121,6 +121,7 @@ export const translations: Translations = {
   // Footer
   'footer.rights': {pt: 'Todos os direitos reservados.', en: 'All rights reserved.'},
   'footer.made': {pt: 'Feito com', en: 'Made with'},
+  'footer.top': {pt: 'Voltar ao topo', en: 'Back to top'},
   
   // Navigation
   'nav.about': {pt: 'Sobre', en: 'About'},
@@ -141,8 +142,28 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider: FC<{children: ReactNode}> = ({children}) => {
   const [language, setLanguage] = useState<Language>('pt');
 
+  // SSR renders 'pt'; on the client, restore the saved choice or fall back to the browser language.
+  useEffect(() => {
+    let saved: string | null = null;
+    try {
+      saved = localStorage.getItem('language');
+    } catch {}
+    const preferred = saved ?? (navigator.language.toLowerCase().startsWith('pt') ? 'pt' : 'en');
+    setLanguage(preferred === 'en' ? 'en' : 'pt');
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = language === 'pt' ? 'pt-BR' : 'en';
+  }, [language]);
+
   const toggleLanguage = useCallback(() => {
-    setLanguage(prev => (prev === 'pt' ? 'en' : 'pt'));
+    setLanguage(prev => {
+      const next = prev === 'pt' ? 'en' : 'pt';
+      try {
+        localStorage.setItem('language', next);
+      } catch {}
+      return next;
+    });
   }, []);
 
   const t = useCallback(
