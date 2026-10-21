@@ -1,5 +1,5 @@
 # Use uma imagem base mínima para construção
-FROM node:20-alpine AS build
+FROM node:24-alpine AS build
 
 # Defina o diretório de trabalho no contêiner
 WORKDIR /app
@@ -30,7 +30,7 @@ RUN rm -rf node_modules && yarn install --production --frozen-lockfile
 RUN ls -la /app
 
 # Use uma imagem base mínima para produção
-FROM node:20-alpine
+FROM node:24-alpine
 
 # Defina o diretório de trabalho no contêiner
 WORKDIR /app
