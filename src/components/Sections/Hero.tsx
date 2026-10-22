@@ -1,7 +1,7 @@
-import {ArrowDown, Download, Github, Linkedin, Mail} from 'lucide-react';
+import {Download, Github, Linkedin} from 'lucide-react';
 import {FC, memo} from 'react';
 
-import {hero, links, SectionId} from '../../data/content';
+import {hero, links, resume, SectionId} from '../../data/content';
 import {useLanguage} from '../../context/LanguageContext';
 
 // Entrance animations are pure CSS (see globals.css) so the hero is visible before JS hydrates.
@@ -10,19 +10,23 @@ const delay = (s: number) => ({animationDelay: `${s}s`});
 export const socials = [
   {label: 'GitHub', href: links.github, Icon: Github},
   {label: 'LinkedIn', href: links.linkedin, Icon: Linkedin},
-  {label: 'Email', href: links.email, Icon: Mail},
 ];
+
+// Stack shown in the marquee strip, taken from the skills list (minus spoken languages).
+const stack = resume.skills.slice(0, -1).flatMap(group => group.items);
 
 const Hero: FC = memo(() => {
   const {t} = useLanguage();
 
   return (
-    <section className="relative flex min-h-[100svh] items-center justify-center px-4 sm:px-6" id={SectionId.Hero}>
+    <section
+      className="relative flex min-h-[100svh] items-center justify-center px-4 pb-24 pt-20 sm:px-6"
+      id={SectionId.Hero}>
       <div className="w-full max-w-4xl space-y-6 sm:space-y-8">
         <h1 className="text-5xl font-bold leading-[0.9] tracking-tighter text-white sm:text-7xl lg:text-8xl xl:text-9xl">
           {hero.name.split('').map((char, i) => (
             <span
-              className="rise inline-block transition duration-200 hover:-translate-y-2 hover:text-blue-400"
+              className="rise inline-block transition duration-200 hover:-translate-y-2 hover:text-violet-300"
               key={i}
               style={delay(0.2 + i * 0.04)}>
               {char === ' ' ? '\u00A0' : char}
@@ -85,14 +89,19 @@ const Hero: FC = memo(() => {
         </div>
       </div>
 
-      <a
-        aria-label={t(hero.scroll)}
-        className="fade absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-white/40 transition hover:text-white"
-        href={`#${SectionId.About}`}
+      <div
+        aria-hidden
+        className="fade marquee absolute inset-x-0 bottom-0 border-y border-white/10 bg-black/20 py-4 backdrop-blur-sm"
         style={delay(1.4)}>
-        <span className="text-xs uppercase tracking-widest">{t(hero.scroll)}</span>
-        <ArrowDown className="h-4 w-4 animate-bounce" />
-      </a>
+        <ul className="marquee-track flex w-max gap-10 font-mono text-sm uppercase tracking-widest text-white/50">
+          {[...stack, ...stack].map((item, i) => (
+            <li className="flex items-center gap-10" key={i}>
+              {item}
+              <span className="text-violet-400/60">✦</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 });

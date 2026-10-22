@@ -33,7 +33,6 @@ export const nav: {id: SectionId; label: L}[] = [
 ];
 
 export const links = {
-  email: 'mailto:devluisao@gmail.com',
   github: 'https://github.com/luluzao0',
   linkedin: 'https://www.linkedin.com/in/1Lgl/',
   resume: 'https://drive.google.com/file/d/15yDpAIwycrXCuKfVmUlLFVQAQAOpnvCd/view?usp=sharing',
@@ -46,7 +45,6 @@ export const hero = {
   greeting: l('Olá mundo, eu sou Luis!', "Hello world, I'm Luis!"),
   resume: l('Currículo', 'Resume'),
   contact: l('Contato', 'Contact'),
-  scroll: l('Rolar', 'Scroll'),
 };
 
 export const about = {
@@ -314,11 +312,12 @@ export const testimonials = {
 export const contact = {
   eyebrow: l('Vamos conversar', "Let's talk"),
   title: l('Contato', 'Contact'),
+  heading: l('Vamos construir algo juntos?', "Let's build something together?"),
   text: l(
-    'Tem um projeto, uma vaga ou só quer trocar uma ideia? Meu e-mail está sempre aberto.',
-    'Have a project, a role, or just want to chat? My inbox is always open.',
+    'Tem um projeto, uma vaga ou só quer trocar uma ideia? Me chama no LinkedIn ou dá uma olhada no meu GitHub.',
+    'Have a project, a role, or just want to chat? Reach out on LinkedIn or check out my GitHub.',
   ),
-  cta: l('Enviar e-mail', 'Send an email'),
+  cta: l('Falar no LinkedIn', 'Message me on LinkedIn'),
   location: l('São Luís, Brasil', 'São Luís, Brazil'),
 };
 

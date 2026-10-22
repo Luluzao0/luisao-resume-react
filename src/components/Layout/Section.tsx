@@ -12,7 +12,7 @@ export const reveal = {
   transition: {duration: 0.6, ease: 'easeOut'},
 } as const;
 
-export const card = 'rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm';
+export const card = 'spotlight rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm';
 export const chip = 'rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-white/70';
 
 const Section: FC<PropsWithChildren<{id: SectionId; eyebrow: L; title: L; className?: string}>> = memo(
@@ -22,10 +22,12 @@ const Section: FC<PropsWithChildren<{id: SectionId; eyebrow: L; title: L; classN
       <section className={classNames('scroll-mt-16 px-4 py-24 sm:px-6 sm:py-32', className)} id={id}>
         <div className="mx-auto max-w-5xl">
           <motion.header className="mb-12 sm:mb-16" {...reveal}>
-            <p className="mb-4 border-l-2 border-white/40 pl-4 text-sm uppercase tracking-[0.3em] text-white/60">
+            <p className="mb-4 border-l-2 border-violet-400/70 pl-4 text-sm uppercase tracking-[0.3em] text-white/60">
               {t(eyebrow)}
             </p>
-            <h2 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-7xl">{t(title)}</h2>
+            <h2 className="bg-gradient-to-br from-white via-white to-violet-300/70 bg-clip-text pb-1 text-4xl font-bold tracking-tighter text-transparent sm:text-5xl md:text-7xl">
+              {t(title)}
+            </h2>
           </motion.header>
           {children}
         </div>

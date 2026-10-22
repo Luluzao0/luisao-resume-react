@@ -1,5 +1,5 @@
 import {motion} from 'framer-motion';
-import {Github, Linkedin, Mail, MapPin} from 'lucide-react';
+import {ArrowUpRight, Github, Linkedin, MapPin} from 'lucide-react';
 import {FC, memo} from 'react';
 
 import {contact, links, SectionId} from '../../data/content';
@@ -9,41 +9,43 @@ import Section, {card, reveal} from '../Layout/Section';
 const Contact: FC = memo(() => {
   const {t} = useLanguage();
 
-  const items = [
-    {Icon: Mail, text: 'devluisao@gmail.com', href: links.email},
-    {Icon: Linkedin, text: 'LinkedIn', href: links.linkedin},
-    {Icon: Github, text: 'Luluzao0', href: links.github},
-    {Icon: MapPin, text: t(contact.location), href: links.map},
-  ];
-
   return (
     <Section eyebrow={contact.eyebrow} id={SectionId.Contact} title={contact.title}>
-      <motion.div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between" {...reveal}>
-        <p className="max-w-xl text-lg text-white/70">{t(contact.text)}</p>
+      <motion.div
+        className={`${card} overflow-hidden bg-gradient-to-br from-violet-500/20 via-white/5 to-teal-500/20 p-8 sm:p-12`}
+        {...reveal}>
+        <h3 className="max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-5xl">{t(contact.heading)}</h3>
+        <p className="mt-4 max-w-xl text-lg text-white/70">{t(contact.text)}</p>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            className="group flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-black transition hover:bg-white/90"
+            href={links.linkedin}
+            rel="noopener noreferrer"
+            target="_blank">
+            <Linkedin className="h-5 w-5" />
+            {t(contact.cta)}
+            <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+          <a
+            className="flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3 font-medium text-white transition hover:bg-white/10"
+            href={links.github}
+            rel="noopener noreferrer"
+            target="_blank">
+            <Github className="h-5 w-5" />
+            Luluzao0
+          </a>
+        </div>
+
         <a
-          className="flex shrink-0 items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-black transition hover:bg-white/90"
-          href={links.email}>
-          <Mail className="h-5 w-5" />
-          {t(contact.cta)}
+          className="mt-8 inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-white"
+          href={links.map}
+          rel="noopener noreferrer"
+          target="_blank">
+          <MapPin className="h-4 w-4" />
+          {t(contact.location)}
         </a>
       </motion.div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        {items.map(({Icon, text, href}) => (
-          <motion.a
-            className={`${card} group flex items-center gap-4 p-5 text-white/80 transition-colors hover:border-white/30 hover:bg-white/10`}
-            href={href}
-            key={href}
-            rel="noopener noreferrer"
-            target={href.startsWith('mailto:') ? undefined : '_blank'}
-            {...reveal}>
-            <span className="rounded-xl bg-white/10 p-3 transition-colors group-hover:bg-white/20">
-              <Icon className="h-5 w-5" />
-            </span>
-            <span className="font-medium">{text}</span>
-          </motion.a>
-        ))}
-      </div>
     </Section>
   );
 });

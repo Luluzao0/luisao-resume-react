@@ -8,7 +8,6 @@ export default function Document() {
         <meta content="notranslate" name="google" />
         <meta content="#000000" name="theme-color" />
         <meta content="telephone=no" name="format-detection" />
-        <link href="https://images.unsplash.com" rel="preconnect" />
       </Head>
       <body className="bg-black">
         <Main />

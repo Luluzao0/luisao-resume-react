@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence, motion, useScroll} from 'framer-motion';
 import {Globe, Menu, X} from 'lucide-react';
 import {FC, memo, useEffect, useState} from 'react';
 
@@ -11,6 +11,7 @@ const Header: FC = memo(() => {
   const [active, setActive] = useState<SectionId | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const {scrollYProgress} = useScroll();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -108,6 +109,12 @@ const Header: FC = memo(() => {
           </motion.ul>
         )}
       </AnimatePresence>
+
+      {/* Reading progress */}
+      <motion.div
+        className="absolute inset-x-0 bottom-0 h-px origin-left bg-gradient-to-r from-violet-400 via-fuchsia-400 to-teal-300"
+        style={{scaleX: scrollYProgress}}
+      />
     </header>
   );
 });
